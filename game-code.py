@@ -1,6 +1,6 @@
 import random
 
-
+# Play in your terminal with w, s, d, a as your directional commands. Try to get all the money without getting caught by the "W's"!
 
 class Ef:
     def __init__(self, value, mappy, map_object):
@@ -90,12 +90,7 @@ class Ef:
             self.get_neighbors()
 
             
-    
-            
-        
 
-
-    
         
         
 
@@ -132,14 +127,6 @@ class matrix:
                         self.dict[f"{x},{y}"].append([x , y + 1])
                     if self.is_not_ex(x, y - 1):
                         self.dict[f"{x},{y}"].append([x , y - 1])
-                   
-        
-                    
-                    
-                    
-                    
-
-        
 
     def print_map(self):
         for row in self.arrays:
@@ -148,14 +135,7 @@ class matrix:
         self.arrays[x][y] = value.value
         value.location = [x, y]
     
-    
-
-
-                
-
-
-
-    
+            
 
 running = True
 map = matrix()
@@ -199,7 +179,7 @@ map.insert(17,12, money)
 
 elem.get_neighbors()
 map.print_map()
-print(map.dict)
+
 
 while running:
     elem.move(elem, enem)
@@ -209,7 +189,7 @@ while running:
     enem3.move(enem3, elem)
     for row in map.arrays:
                 print(row)
-    print(map.points)
+    print("TOTAL POINTS: ", map.points)
     if map.arrays[elem.location[0]][elem.location[1]] == "W":
         running = False
 print("YOU HAVE BEEN CONSUMED!")  
