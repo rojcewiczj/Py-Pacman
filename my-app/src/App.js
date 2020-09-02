@@ -6,6 +6,7 @@ import './App.css';
 const numRows = 20;
 const numCols = 20;
 
+
 function App() {
   const [grid, setGrid] = useState(()=> {
     const rows = [];
@@ -14,7 +15,26 @@ function App() {
     }
     return rows
   });
-   
+ const connections = {}
+ for(let x = 0; x < grid.length; x ++){
+   for(let y = 0; y < grid[x].length; y++){
+      connections[`${x}, ${y}`] = []
+      if((x + 1) < 20){
+      connections[`${x}, ${y}`].push([x + 1,  y])
+      }
+       if((x - 1) > 0){
+      connections[`${x}, ${y}`].push([x - 1 , y])
+       }
+       if((y +1) < 20){
+      connections[`${x}, ${y}`].push([x , y + 1])
+       }
+       if((y -1) > 0){
+      connections[`${x}, ${y}`].push([x , y - 1])
+    }
+   }
+ }
+ console.log(grid)
+ console.log(connections)
  const [running, setRunning] = useState(false);
  const runningRef = useRef(running);
  runningRef.current = running
