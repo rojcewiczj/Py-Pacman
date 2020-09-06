@@ -6,6 +6,9 @@ export class Entity{
         this.value = value
         this.connections = connections
         this.map = mappy
+        this.state = {
+            map : this.map
+        }
         this.location = []
         this.neighbors = []
         this.points = 0
@@ -36,6 +39,7 @@ export class Entity{
         if (elem.value === "P"){ 
             console.log(elem.value)
             let dir = this.userInput
+            console.log(this.userInput)
             info[0] = dir
             console.log(dir)
             console.log(this.location)
@@ -120,9 +124,25 @@ export class Entity{
                 }
                 }
             this.map[this.location[0]][this.location[1]] = elem.value
+            this.map = this.map
             this.get_neighbors()
            
             
+    }
+  
+    render_map(){
+        
+        return(
+            <table>
+            {
+              this.map.map((row, index) => (
+                <tr key={`${row[0]}, ${index}`}>
+                  {row.map(cellId => <th key={cellId}>{cellId}</th>)}
+                </tr>
+              ))
+            }
+          </table>
+        )
     }
         }
 

@@ -1,95 +1,53 @@
-import React, {useState, useCallback, useREntity} from 'react';
+import React, {useState, useCallback, useREntity, useEffect} from 'react';
 import produce from 'immer';
 import logo from './logo.svg';
 import './App.css';
 import {Entity} from "./Entity"
-
+import {Matrix} from "./matrix"
 
 
 
 function App() {
-
-const grid = []
+const grid = new Matrix()
+grid.generate()
+grid.gen_connections()
 const [userInput, setInput] = useState("")
-for(let i = 0; i < 20; i++){
-  const row = []
-  if(i == 0 || i == 19) {
-    for(let j = 0; j < 20; j++){
-      row.push("X")
-  }}
-  else{
-    for(let j = 0; j < 20; j++){
-      row.push(".")
-  }}
-row[0] = "X"
-row[row.length -1] = "X"
-grid.push(row)
-}
-
-function is_not_ex(x, y){
-  if (grid[x][y] != "X"){
-    return true
-  }
-  else{
-    return false
-}}
-
-function insert(x, y, elem){
-  grid[x][y] = elem.value
-  elem.location = [x, y]
-}
-const connections = {}
-  for (let x = 0; x < grid.length ; x ++){
-    for(let y  = 0; y < grid[x].length ; y ++){
-      if (is_not_ex(x, y)){
-        connections[`${x},${y}`] = []
-        if(is_not_ex(x +1, y)){
-          connections[`${x},${y}`].push([x + 1,  y])
-        }
-        if (is_not_ex(x -1, y)){
-          connections[`${x},${y}`].push([x - 1 , y])
-        }
-        if (is_not_ex(x , y + 1)){
-          connections[`${x},${y}`].push([x  , y + 1])
-        }
-        if (is_not_ex(x, y - 1)){
-          connections[`${x},${y}`].push([x , y - 1])
-        }
+const [new_map, set_new_map] = useState([])
   
-      }
-    }
-  }
-const elem = new Entity("P", grid, connections, userInput)
-const enem = new Entity("W", grid, connections, userInput)
-const enem1 = new Entity("W", grid, connections, userInput)
-const enem2 = new Entity("W", grid, connections, userInput)
-const enem3 = new Entity("W", grid, connections, userInput)
-const money = new Entity("$", grid, connections, userInput)
-const ex = new Entity("X", grid, connections)
-insert(1,2, elem)
-insert(3,3, ex)
-insert(7,4, ex)
-insert(2,7, ex)
-insert(3,9, ex)
-insert(9,13, ex)
-insert(13,18, ex)
-insert(11,16, ex)
-insert(15,5, ex)
-insert(17,2, ex)
-insert(14,6, ex)
-insert(17,9, ex)
-insert(4,5, enem)
-insert(4,5, money)
-insert(2,6, money)
-insert(5,8, money)
-insert(8,1, money)
-insert(15,5, money)
-insert(12,11, money)
-insert(11,18, money)
-insert(16,3, money)
-insert(6,13, money)
-insert(9,9, money)
-insert(17,12, money)
+const elem = new Entity("P", grid.arrays, grid.connections, userInput)
+const enem = new Entity("W", grid.arrays, grid.connections, userInput)
+const enem1 = new Entity("W", grid.arrays, grid.connections, userInput)
+const enem2 = new Entity("W", grid.arrays, grid.connections, userInput)
+const enem3 = new Entity("W", grid.arrays, grid.connections, userInput)
+const money = new Entity("$", grid.arrays, grid.connections, userInput)
+const ex = new Entity("X", grid.arrays, grid.connections)
+grid.insert(1,2, elem)
+grid.insert(3,3, ex)
+grid.insert(7,4, ex)
+grid.insert(2,7, ex)
+grid.insert(3,9, ex)
+grid.insert(9,13, ex)
+grid.insert(13,18, ex)
+grid.insert(11,16, ex)
+grid.insert(15,5, ex)
+grid.insert(17,2, ex)
+grid.insert(14,6, ex)
+grid.insert(17,9, ex)
+grid.insert(4,5, enem)
+grid.insert(2,3, enem1)
+grid.insert(5,6, enem2)
+grid.insert(15,16, enem3)
+grid.insert(4,5, money)
+grid.insert(2,6, money)
+grid.insert(5,8, money)
+grid.insert(8,1, money)
+grid.insert(15,5, money)
+grid.insert(12,11, money)
+grid.insert(11,18, money)
+grid.insert(16,3, money)
+grid.insert(6,13, money)
+grid.insert(9,9, money)
+grid.insert(17,12, money)
 
 elem.get_neighbors()
 
@@ -97,24 +55,30 @@ function runFunctions(string){
   setInput(string)
   elem.move(elem, enem)
   enem.move(enem, elem)
+  enem1.move(enem1, elem)
+  enem2.move(enem2, elem)
+  enem3.move(enem3, elem)
+  
   setInput(string)
-  console.log(elem.map)
+set_new_map(elem.render_map())
 }
 
 
+console.log(new_map)
 return(
   <div>
+  {new_map}
   <button onClick ={()=>{runFunctions("w")}}>
-  W
+  UP
   </button>
   <button onClick ={()=>{runFunctions("s")}}>
-  S
+  DOWN
   </button>
   <button onClick ={()=>{runFunctions("d")}}>
-  D
+  RIGHT
   </button>
   <button onClick ={()=>{runFunctions("a")}}>
-  A
+  LEFT
   </button>
  
 </div>
