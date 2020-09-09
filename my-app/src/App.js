@@ -108,6 +108,10 @@ class Render_Map extends React.Component {
       () => this.tick(),
       1000
     );
+    this.timerID = setInterval(
+      () => this.update_buttton(),
+      100
+    );
     
    
   }
@@ -124,13 +128,17 @@ class Render_Map extends React.Component {
     enem3.move(enem3, elem)
 
   }
-    
+  
     this.setState({
       map: elem.Map(),
-      div: startOrStop()
+     
     });
   }
-
+ update_buttton() {
+  this.setState({
+    div: startOrStop()
+  });
+  }
   render() {
     return (
       <div>
