@@ -108,7 +108,7 @@ class Render_Map extends React.Component {
       () => this.tick(),
       1000
     );
-    yarn
+    
     this.timerID = setInterval(
       () => this.update_buttton(),
       100
