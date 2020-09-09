@@ -2,9 +2,6 @@ import React from "react"
 
 export class Matrix{
     constructor(){
-        this.state = {
-            update: 1
-        }
         this.arrays = []
         this.connections = {}
         this.points = 0

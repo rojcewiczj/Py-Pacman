@@ -1,4 +1,5 @@
 .App {
+  background-image: url("./images/lightning.jpg");
   text-align: center;
 }
 
@@ -35,4 +36,118 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.button{
+  background: rgba(0, 0, 0, 0.5);
+  color: rgb(216, 190, 212);
+  border:3px solid rgb(247, 229, 243);
+  cursor: pointer;
+}
+
+
+
+@keyframes glow {
+  from {
+  box-shadow: 0 0 5px rgb(216, 190, 212), 0 0 10px rgb(173, 141, 169), 0 0 15px rgb(63, 39, 58), 0 0 20px rgb(63, 39, 58), 0 0 25px rgb(63, 39, 58), 0 0 30px rgb(63, 39, 58), 0 0 35px rgb(63, 39, 58);
+  }
+  to {
+  box-shadow: 0 0 10px rgb(215, 174, 219), 0 0 20px rgb(222, 175, 228), 0 0 30px rgb(63, 39, 58), 0 0 40px rgb(63, 39, 58), 0 0 50px rgb(63, 39, 58), 0 0 60px rgb(63, 39, 58), 0 0 70px rgb(63, 39, 58);
+  }
+}
+
+.mainDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentDiv{
+  display: flex;
+  flex-direction: row;
+}
+
+.leftDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightDiv{
+  display: flex;
+}
+
+.init{
+  border:3px solid rgb(247, 229, 243);
+  box-shadow: 0 0 5px rgb(236, 203, 234), 0 0 10px rgb(223, 193, 223), 0 0 15px rgb(253, 168, 236), 0 0 20px rgb(253, 168, 236), 0 0 25px rgb(253, 168, 236), 0 0 30px rgb(253, 168, 236), 0 0 35px rgb(253, 168, 236);
+  /* box-shadow: 0px 0px 10px rgb(247, 209, 240); */
+  animation: glow 1s ease-in-out infinite alternate;
+  border-radius: 3px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgb(216, 190, 212);
+  font-size: 18px;
+  width: 600px;
+  height: 25%;
+  overflow: hidden;
+}
+
+.move{
+  border:3px solid rgb(247, 229, 243);
+  box-shadow: 0 0 5px rgb(236, 203, 234), 0 0 10px rgb(223, 193, 223), 0 0 15px rgb(253, 168, 236), 0 0 20px rgb(253, 168, 236), 0 0 25px rgb(253, 168, 236), 0 0 30px rgb(253, 168, 236), 0 0 35px rgb(253, 168, 236);
+  /* box-shadow: 0px 0px 10px rgb(247, 209, 240); */
+  animation: glow 1s ease-in-out infinite alternate;
+  border-radius: 3px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  width: 600px;
+  margin-top: 12px;
+}
+
+.moveDiv{
+  display: flex;
+  flex-direction: column;
+}
+
+.steerTop{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.steerMid{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.steerBot{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.map{
+  border:3px solid rgb(247, 229, 243);
+  box-shadow: 0 0 5px rgb(236, 203, 234), 0 0 10px rgb(223, 193, 223), 0 0 15px rgb(253, 168, 236), 0 0 20px rgb(253, 168, 236), 0 0 25px rgb(253, 168, 236), 0 0 30px rgb(253, 168, 236), 0 0 35px rgb(253, 168, 236);
+  /* box-shadow: 0px 0px 10px rgb(247, 209, 240); */
+  animation: glow 1s ease-in-out infinite alternate;
+  border-radius: 3px;
+  padding:40px 40px 110px 40px;
+  background: rgba(0, 0, 0, 0.5);
+  height: 55%;
+  margin-left: 55px;
+}
+
+.mapCanvas{
+  padding-bottom: 200px;
+}
+
+.wheel{
+  width: 160px;
+}
+
+.logo{
+  width: 600px;
 }
