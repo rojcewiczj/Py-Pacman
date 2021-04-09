@@ -13,7 +13,7 @@ translating all my Python code to Javascript, as well as implementing a system t
 Just to high light a few interesting solution I came up with to get this project working....
 
 Here I have a class for rerendering the map every second and moving all enemy entities towards the player. I did this my retooling a javascript component initially designed to rerender a clock as the hands change position. 
-
+{
 class Render_Map extends React.Component {
   constructor() {
     super();
@@ -54,5 +54,5 @@ class Render_Map extends React.Component {
     });
   }
   
-  
+  }
   
