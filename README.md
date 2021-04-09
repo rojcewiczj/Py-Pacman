@@ -13,46 +13,46 @@ translating all my Python code to Javascript, as well as implementing a system t
 Just to high light a few interesting solution I came up with to get this project working....
 
 Here I have a class for rerendering the map every second and moving all enemy entities towards the player. I did this my retooling a javascript component initially designed to rerender a clock as the hands change position. 
-{
-class Render_Map extends React.Component {
-  constructor() {
-    super();
-    this.state = {map: elem.Map(),
-    div: startOrStop()};
-  }
 
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-    
-    this.timerID = setInterval(
-      () => this.update_buttton(),
-      100
-    );
-    
-   
-  }
+  class Render_Map extends React.Component {
+    constructor() {
+      super();
+      this.state = {map: elem.Map(),
+      div: startOrStop()};
+    }
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
+    componentDidMount() {
+      this.timerID = setInterval(
+        () => this.tick(),
+        1000
+      );
 
-  tick() {
-    if (running == true){
-    enem.move(enem, elem)
-    enem1.move(enem1, elem)
-    enem2.move(enem2, elem)
-    enem3.move(enem3, elem)
+      this.timerID = setInterval(
+        () => this.update_buttton(),
+        100
+      );
 
-  }
-  
-    this.setState({
-      map: elem.Map(),
-     
-    });
-  }
-  
-  }
+
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+
+    tick() {
+      if (running == true){
+      enem.move(enem, elem)
+      enem1.move(enem1, elem)
+      enem2.move(enem2, elem)
+      enem3.move(enem3, elem)
+
+    }
+
+      this.setState({
+        map: elem.Map(),
+
+      });
+    }
+
+    }
   
