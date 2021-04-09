@@ -14,45 +14,45 @@ Just to high light a few interesting solution I came up with to get this project
 
 Here I have a class for rerendering the map every second and moving all enemy entities towards the player. I did this my retooling a javascript component initially designed to rerender a clock as the hands change position. 
 
-  class Render_Map extends React.Component {
-    constructor() {
-      super();
-      this.state = {map: elem.Map(),
-      div: startOrStop()};
-    }
+    class Render_Map extends React.Component {
+      constructor() {
+        super();
+        this.state = {map: elem.Map(),
+        div: startOrStop()};
+      }
 
-    componentDidMount() {
-      this.timerID = setInterval(
-        () => this.tick(),
-        1000
-      );
+      componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(),
+          1000
+        );
 
-      this.timerID = setInterval(
-        () => this.update_buttton(),
-        100
-      );
+        this.timerID = setInterval(
+          () => this.update_buttton(),
+          100
+        );
 
 
-    }
+      }
 
-    componentWillUnmount() {
-      clearInterval(this.timerID);
-    }
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
 
-    tick() {
-      if (running == true){
-      enem.move(enem, elem)
-      enem1.move(enem1, elem)
-      enem2.move(enem2, elem)
-      enem3.move(enem3, elem)
+      tick() {
+        if (running == true){
+        enem.move(enem, elem)
+        enem1.move(enem1, elem)
+        enem2.move(enem2, elem)
+        enem3.move(enem3, elem)
 
-    }
+      }
 
-      this.setState({
-        map: elem.Map(),
+        this.setState({
+          map: elem.Map(),
 
-      });
-    }
+        });
+      }
 
-    }
-  
+      }
+
